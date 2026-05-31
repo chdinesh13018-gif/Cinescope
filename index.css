@@ -1,0 +1,83 @@
+/* ─── CSS Variables / Design Tokens ─── */
+:root {
+  --gold: #f5c518;
+  --gold-dim: #b8951a;
+  --gold-glow: rgba(245, 197, 24, 0.25);
+  --bg: #0a0a0f;
+  --bg-card: #12121a;
+  --bg-glass: rgba(18, 18, 26, 0.75);
+  --surface: #1a1a28;
+  --surface-hover: #22223a;
+  --text-primary: #f0f0f5;
+  --text-secondary: #8888aa;
+  --text-muted: #55556a;
+  --border: rgba(245, 197, 24, 0.2);
+  --border-hover: rgba(245, 197, 24, 0.5);
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 20px var(--gold-glow);
+  --transition: 0.25s ease;
+}
+
+[data-theme='light'] {
+  --bg: #f4f4f8;
+  --bg-card: #ffffff;
+  --bg-glass: rgba(255, 255, 255, 0.8);
+  --surface: #e8e8f0;
+  --surface-hover: #dcdcec;
+  --text-primary: #111118;
+  --text-secondary: #55556a;
+  --text-muted: #9999aa;
+  --border: rgba(180, 140, 10, 0.25);
+  --border-hover: rgba(180, 140, 10, 0.55);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ─── Global Reset ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  min-height: 100vh;
+  transition: background var(--transition), color var(--transition);
+}
+
+img { display: block; max-width: 100%; }
+button { cursor: pointer; font-family: inherit; }
+a { text-decoration: none; }
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 3px; }
+
+/* ─── Utility ─── */
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+
+/* ─── Animations ─── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 10px var(--gold-glow); }
+  50%       { box-shadow: 0 0 28px rgba(245,197,24,0.5); }
+}
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
